@@ -1,7 +1,18 @@
 # Nix install
 
-My custom nix installer, makes it easy to install my configs with disko
-and increases the tmpfs size so I don't run out of disk space when installing.
+Installing [my dotfiles](https://github.com/WJehee/.dotfiles-nix) using this image.
 
-Provides the `custom-install` command to perform the install
+1. Become root `sudo su`
+2. Create the password for full disk encryption: `echo "MY_PASSWORD" > /tmp/secret.key`
+3. `disko-format /PATH/TO/DISK`
+4. `install-flake HOSTNAME`
+5. Set root passwd after being prompted
+
+After the install has finished, do the following:  
+```sh
+nixos-enter --root /mnt
+passwd USERNAME
+exit
+reboot
+```
 
