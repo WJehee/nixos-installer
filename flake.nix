@@ -21,6 +21,8 @@
                             '';
                             install-flake = pkgs.writeShellScriptBin "install-flake" ''
                                 git clone https://github.com/wjehee/.dotfiles-nix
+                                nixos-generate-config --no-filesystems
+                                cp /etc/nixos/hardware-configuration.nix ".dotfiles-nix/hosts/$1/"
                                 nixos-install --flake ".dotfiles-nix#$1"
                             '';
                     in {
